@@ -37,7 +37,7 @@ public class PanelImage extends JPanel {
     private Image image;
 
     public PanelImage() {
-        image = new ImageIcon(getClass().getResource("/Code/Name/Flamboyan/Files/bgbg.jpg")).getImage();
+        image = new ImageIcon(getClass().getResource("/Code/Name/Flamboyan/Files/hotel.jpg")).getImage();
     }
 
     @Override

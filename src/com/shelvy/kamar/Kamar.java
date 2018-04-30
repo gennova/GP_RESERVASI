@@ -16,6 +16,8 @@ public class Kamar {
     private String nama_kamar;
     private int luas_kamar;
     private String fasilitas;
+    private String keterangan;
+    private String tipe;
 
     public Kamar() {
 
@@ -61,4 +63,19 @@ public class Kamar {
         this.fasilitas = fasilitas;
     }
 
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
+    }
+
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
+    }
+
+    public String getTipe() {
+        return tipe;
+    }
 }
