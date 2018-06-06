@@ -5,8 +5,8 @@
  */
 package com.init.tools;
 
-import com.shelvy.pelanggan.PelangganDao;
-import com.shelvy.pelanggan.PelangganDaoImplemen;
+import com.hope.pelanggan.PelangganDao;
+import com.hope.pelanggan.PelangganDaoImplemen;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;

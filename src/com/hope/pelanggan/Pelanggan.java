@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.shelvy.pelanggan;
+package com.hope.pelanggan;
 
 /**
  *
@@ -11,17 +11,18 @@ package com.shelvy.pelanggan;
  */
 public class Pelanggan {
 
-    private int id;
-    private String kode_pelanggan;
-    private String nama_pelanggan;
-    private String nama_lembaga;
-    private String alamat_pelanggan;
-    private String email_pelanggan;
-    private String telpon_pelanggan;
-    private String nomer_hp;
-    private String nomer_hp2;
-    private String nomer_wa;
-    private String line;
+    private int id; //1
+    private String kode_pelanggan; //2
+    private String nama_pelanggan; //3
+    private String nama_lembaga; //4
+    private String alamat_pelanggan; //5
+    private String email_pelanggan;//6
+    private String telpon_pelanggan; //7
+    private String nomer_hp;//8
+    private String nomer_hp2;//9
+    private String nomer_wa;//10
+    private String line;//11
+    private String instagram;//12
 
     public int getId() {
         return id;
@@ -109,6 +110,14 @@ public class Pelanggan {
 
     public void setNama_lembaga(String nama_lembaga) {
         this.nama_lembaga = nama_lembaga;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
     }
 
 }
