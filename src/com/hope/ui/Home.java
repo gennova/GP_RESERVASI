@@ -13,7 +13,7 @@ public class Home extends javax.swing.JFrame {
 
     /**
      * Creates new form Home
-     */
+     */                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
     public Home() {
         initComponents();
         setLocationRelativeTo(null);
@@ -54,6 +54,7 @@ public class Home extends javax.swing.JFrame {
         buttonGradientColor2 = new Code.Name.Flamboyan.SwingMakeOver.ButtonGradientColor();
         buttonGradientColor3 = new Code.Name.Flamboyan.SwingMakeOver.ButtonGradientColor();
         panelImage1 = new Code.Name.Flamboyan.SwingMakeOver.PanelImage();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistem Informasi Pemesanan Kamar Griya Paseban");
@@ -257,6 +258,11 @@ public class Home extends javax.swing.JFrame {
         buttonGradientColor2.setText("KAMAR");
 
         buttonGradientColor3.setText("KATEGORI");
+        buttonGradientColor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGradientColor3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -329,15 +335,27 @@ public class Home extends javax.swing.JFrame {
                     .addGap(0, 20, Short.MAX_VALUE)))
         );
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("GRIYA PASEBAN BOOK & RESERVATIONS");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.SE_RESIZE_CURSOR));
+        jLabel8.setOpaque(true);
+
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
+            .addGroup(panelImage1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,6 +414,12 @@ public class Home extends javax.swing.JFrame {
         pui.setVisible(true);
     }//GEN-LAST:event_buttonGradientColor1ActionPerformed
 
+    private void buttonGradientColor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGradientColor3ActionPerformed
+        // TODO add your handling code here:
+        KategoriKamarUI i = new KategoriKamarUI();
+        i.setVisible(true);
+    }//GEN-LAST:event_buttonGradientColor3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -450,6 +474,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

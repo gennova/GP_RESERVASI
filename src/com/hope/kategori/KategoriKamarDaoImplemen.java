@@ -24,9 +24,10 @@ import javax.swing.JOptionPane;
 public class KategoriKamarDaoImplemen implements KategoriKamarDao {
 
     private Connection connection;
-    private static final String sql_insert_kategori = "insert into kategori(nama_kategori) values (?)";
-    private static final String sql_update_kategori = "update kategori set nama_kategori=? where id=?";
-    private static final String sql_get_all_kategori = "select * from kategori";
+    private static final String sql_insert_kategori = "insert into kategori_kamar(nama_kategori) values (?)";
+    private static final String sql_update_kategori = "update kategori_kamar set nama_kategori=? where id=?";
+    private static final String sql_get_all_kategori = "select * from kategori_kamar";
+    private static final String sql_get_kategori_by_id ="select * from kategori_kamar where id=?";
 
     public KategoriKamarDaoImplemen(Connection connection) {
         this.connection = connection;
@@ -37,8 +38,7 @@ public class KategoriKamarDaoImplemen implements KategoriKamarDao {
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(sql_insert_kategori);
-            ps.setInt(1, kamar.getId());
-            ps.setString(2, kamar.getNama_kategori());
+            ps.setString(1, kamar.getNama_kategori());
             int status = ps.executeUpdate();
             if (status == 0) {
                 JOptionPane.showMessageDialog(null, "Data kamar berhasil ditambahkan");
@@ -99,7 +99,21 @@ public class KategoriKamarDaoImplemen implements KategoriKamarDao {
 
     @Override
     public KategoriKamar getKategoriKamarByID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps;
+        ResultSet rs;
+        KategoriKamar kamar = null;
+        try {
+            ps = connection.prepareStatement(sql_get_kategori_by_id);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                kamar = new KategoriKamar();
+                kamar.setId(rs.getInt("id"));
+                kamar.setNama_kategori(rs.getString("nama_kategori"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KategoriKamarDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kamar;
     }
 
 }

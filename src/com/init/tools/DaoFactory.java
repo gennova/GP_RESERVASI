@@ -5,8 +5,14 @@
  */
 package com.init.tools;
 
+import com.hope.kategori.KategoriKamarDao;
+import com.hope.kategori.KategoriKamarDaoImplemen;
 import com.hope.pelanggan.PelangganDao;
 import com.hope.pelanggan.PelangganDaoImplemen;
+import com.hope.transaksi.DetailTransaksiDao;
+import com.hope.transaksi.DetailTransaksiDaoImplemen;
+import com.hope.transaksi.TransaksiDao;
+import com.hope.transaksi.TransaksiDaoImplemen;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -33,6 +39,30 @@ public class DaoFactory {
     static String password = "";
     private static Statement st = null;
     private static PelangganDao pelangganDao;
+    private static KategoriKamarDao kamarDao;
+    private static TransaksiDao transaksiDao;
+    private static DetailTransaksiDao detailTransaksiDao;
+
+    public static TransaksiDao getTransaksiDao() {
+        if (transaksiDao == null) {
+            transaksiDao = new TransaksiDaoImplemen(getConnectionFix());
+        }
+        return transaksiDao;
+    }
+
+    public static DetailTransaksiDao getDetailTransaksiDao() {
+        if (detailTransaksiDao == null) {
+            detailTransaksiDao = new DetailTransaksiDaoImplemen(getConnectionFix());
+        }
+        return detailTransaksiDao;
+    }
+
+    public static KategoriKamarDao getKamarDao() {
+        if (kamarDao == null) {
+            kamarDao = new KategoriKamarDaoImplemen(getConnectionFix());
+        }
+        return kamarDao;
+    }
 
     public static PelangganDao getPelangganDao() {
         if (pelangganDao == null) {
