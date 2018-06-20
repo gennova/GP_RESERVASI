@@ -22,6 +22,10 @@ public interface PelangganDao {
     public Pelanggan GetPelangganByID(int id);
 
     public Pelanggan GetPelangganByKode(String kode);
+    
+    public Pelanggan GetPelangganByNama(String nama);
 
     public void DeletePelangganByID(int id);
+    
+    public void InsertUrutPelanggan(String kode);
 }

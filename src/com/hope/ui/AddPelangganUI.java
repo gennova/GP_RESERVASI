@@ -37,6 +37,8 @@ public class AddPelangganUI extends javax.swing.JFrame {
             txtWhatsappPelanggan.setText(p.getNomer_wa());
             txtLinePelanggan.setText(p.getLine());
             txtInstagramPelanggan.setText(p.getInstagram());
+        } else {
+            txtKodeTamu.setText(DaoFactory.getIDUrutPelanggan());
         }
     }
 
@@ -120,7 +122,11 @@ public class AddPelangganUI extends javax.swing.JFrame {
 
         jLabel2.setText("No");
 
+        txtID.setEditable(false);
+
         jLabel3.setText("Kode Tamu");
+
+        txtKodeTamu.setEditable(false);
 
         jLabel4.setText("Nama");
 
@@ -305,13 +311,17 @@ public class AddPelangganUI extends javax.swing.JFrame {
         if (txtID.getText().equalsIgnoreCase("")) {
             DaoFactory.getPelangganDao().InsertPelanggan(p);
             //JOptionPane.showMessageDialog(null, "Data Pelanggan Berhasil Ditambahkan");
+            DaoFactory.getPelangganDao().InsertUrutPelanggan(kode);
         } else {
             int id = Integer.parseInt(txtID.getText());
-            p.setId(id);
-            DaoFactory.getPelangganDao().UpdatePelanggan(p);
-            //JOptionPane.showMessageDialog(null, "Data Pelanggan Berhasil DIperbaharui");
+            if (id > 0) {
+                p.setId(id);
+                DaoFactory.getPelangganDao().UpdatePelanggan(p);
+                //JOptionPane.showMessageDialog(null, "Data Pelanggan Berhasil DIperbaharui");
+            }
+
         }
-        clearfield();        
+        clearfield();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

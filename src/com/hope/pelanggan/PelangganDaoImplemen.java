@@ -26,6 +26,7 @@ public class PelangganDaoImplemen implements PelangganDao {
     private final String sql_update_pelanggan = "call spUpdatePelanggan(?,?,?,?,?,?,?,?,?,?,?,?)";
     private final String sql_get_all_pelanggan = "select * from pelanggan";
     private final String sql_get_all_pelanggan_ID = "select * from pelanggan where id=?";
+    private final String sql_get_all_pelanggan_nama = "select * from pelanggan where nama=?";
 
     public PelangganDaoImplemen(Connection c) {
         this.connection = c;
@@ -166,13 +167,54 @@ public class PelangganDaoImplemen implements PelangganDao {
             PreparedStatement ps = connection.prepareStatement("delete from pelanggan where id=?");
             ps.setInt(1, id);
             int status = ps.executeUpdate();
-            if (status==0) {
+            if (status == 0) {
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    @Override
+    public Pelanggan GetPelangganByNama(String nama) {
+        PreparedStatement ps;
+        ResultSet rs;
+        Pelanggan pelanggan = null;
+        try {
+            ps = connection.prepareStatement(sql_get_all_pelanggan_nama);
+            ps.setString(1, nama);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                pelanggan = new Pelanggan();
+                pelanggan.setId(rs.getInt("id"));
+                pelanggan.setKode_pelanggan(rs.getString("kode"));
+                pelanggan.setNama_pelanggan(rs.getString("nama"));
+                pelanggan.setNama_lembaga(rs.getString("kantor"));
+                pelanggan.setAlamat_pelanggan(rs.getString("alamat"));
+                pelanggan.setEmail_pelanggan(rs.getString("email"));
+                pelanggan.setTelpon_pelanggan(rs.getString("telpon"));
+                pelanggan.setNomer_hp(rs.getString("hp"));
+                pelanggan.setNomer_hp2(rs.getString("hp2"));
+                pelanggan.setNomer_wa(rs.getString("wa"));
+                pelanggan.setLine(rs.getString("line"));
+                pelanggan.setInstagram(rs.getString("instagram"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pelanggan;
+    }
+
+    @Override
+    public void InsertUrutPelanggan(String kode) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("insert into urutpelanggan(nourutpelanggan) values (?)");
+            ps.setString(1, kode);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

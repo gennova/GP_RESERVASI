@@ -17,10 +17,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -205,5 +210,111 @@ public class DaoFactory {
             status = true;
         }
         return status;
+    }
+    
+    public static String getIDUrutPelanggan() {
+        String kode = "";
+        String formatlalu = "";
+        String formatlalutanggal = null;
+        String formatsekarang = null;
+        PreparedStatement prep = null;
+        ResultSet rs = null;
+        PreparedStatement prep2 = null;
+        Calendar c = Calendar.getInstance();
+        Format formatter = new SimpleDateFormat("ddMMyy");
+        String stringdate = formatter.format(c.getTime());
+        try {
+            prep2 = getConnectionFix().prepareStatement(("SELECT nourutpelanggan as kode FROM urutpelanggan ORDER BY id DESC LIMIT 1"));
+            rs = prep2.executeQuery();
+            while (rs.next()) {
+                formatlalu = rs.getString("kode");
+            }
+            formatsekarang = "GP" + stringdate;
+            if ("".equals(formatlalu)) {
+                formatlalu = "GP" + stringdate + "0001";
+                kode = formatlalu;
+            }
+            formatlalutanggal = formatlalu.substring(0, 8);
+            System.out.println("Lalu " + formatlalu);
+            System.out.println("Lalu Ringkas " + formatlalutanggal);
+            System.out.println("Skrng " + formatsekarang);
+            //JOptionPane.showMessageDialog(null, formatlalu);
+            prep = getConnectionFix().prepareStatement(("SELECT RIGHT(nourutpelanggan,4) AS kode FROM urutpelanggan ORDER BY id DESC LIMIT 1"));
+            rs = prep.executeQuery();
+            while (rs.next()) {
+                if (rs.first() == false) {
+                    kode = "GP" + stringdate + "0001";
+                } else {
+                    rs.last();
+                    if (formatlalutanggal.equalsIgnoreCase(formatsekarang)) {
+                        int autoid = rs.getInt(1) + 1;
+                        String nomor = String.valueOf(autoid);
+                        int nolong = nomor.length();
+                        for (int i = 0; i < 4 - nolong; i++) {
+                            nomor = "0" + nomor;
+                        }
+                        kode = "GP" + stringdate + nomor;
+                    } else {
+                        kode = "GP" + stringdate + "0001";
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kode;
+    }
+    
+    public static String getIDUrutTransaksi() {
+        String kode = "";
+        String formatlalu = "";
+        String formatlalutanggal = null;
+        String formatsekarang = null;
+        PreparedStatement prep = null;
+        ResultSet rs = null;
+        PreparedStatement prep2 = null;
+        Calendar c = Calendar.getInstance();
+        Format formatter = new SimpleDateFormat("ddMMyy");
+        String stringdate = formatter.format(c.getTime());
+        try {
+            prep2 = getConnectionFix().prepareStatement(("SELECT kodetransaksi as kode FROM uruttransaksi ORDER BY id DESC LIMIT 1"));
+            rs = prep2.executeQuery();
+            while (rs.next()) {
+                formatlalu = rs.getString("kode");
+            }
+            formatsekarang = "PO" + stringdate;
+            if ("".equals(formatlalu)) {
+                formatlalu = "PO" + stringdate + "0001";
+                kode = formatlalu;
+            }
+            formatlalutanggal = formatlalu.substring(0, 8);
+            System.out.println("Lalu " + formatlalu);
+            System.out.println("Lalu Ringkas " + formatlalutanggal);
+            System.out.println("Skrng " + formatsekarang);
+            //JOptionPane.showMessageDialog(null, formatlalu);
+            prep = getConnectionFix().prepareStatement(("SELECT RIGHT(kodetransaksi,4) AS kode FROM uruttransaksi ORDER BY id DESC LIMIT 1"));
+            rs = prep.executeQuery();
+            while (rs.next()) {
+                if (rs.first() == false) {
+                    kode = "PO" + stringdate + "0001";
+                } else {
+                    rs.last();
+                    if (formatlalutanggal.equalsIgnoreCase(formatsekarang)) {
+                        int autoid = rs.getInt(1) + 1;
+                        String nomor = String.valueOf(autoid);
+                        int nolong = nomor.length();
+                        for (int i = 0; i < 4 - nolong; i++) {
+                            nomor = "0" + nomor;
+                        }
+                        kode = "PO" + stringdate + nomor;
+                    } else {
+                        kode = "PO" + stringdate + "0001";
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kode;
     }
 }

@@ -15,6 +15,7 @@ import java.sql.Date;
 public class Transaksi {
 
     private int id;
+    private String kodetranskasi;
     private Date tanggaltransaksi;
     private Date tanggalmasuk;
     private Date tanggalkeluar;
@@ -29,6 +30,14 @@ public class Transaksi {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getKodetranskasi() {
+        return kodetranskasi;
+    }
+
+    public void setKodetranskasi(String kodetranskasi) {
+        this.kodetranskasi = kodetranskasi;
     }
 
     public Date getTanggaltransaksi() {
@@ -86,6 +95,5 @@ public class Transaksi {
     public void setTotalbayar(int totalbayar) {
         this.totalbayar = totalbayar;
     }
-    
-    
+
 }

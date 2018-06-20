@@ -15,11 +15,23 @@ public interface DetailTransaksiDao {
 
     public void InsertDetailTransaksi();
 
+    public void InsertDetailTransaksiTemp(DetailTransaksi dt);
+
+    public void DeleteDetailTransaksiTemp();
+
+    public int getTotalOrder();
+
+    public int getTotalDiskon();
+
+    public int getTotalBayar();
+
     public void UpdateDetailTransaksi();
 
     public void DeleteDetailTransaksiByID();
 
     public List<DetailTransaksi> getAllDetailTransaksi();
+    
+    public List<DetailTransaksi> getAllDetailTransaksiTemp();
 
     public List<DetailTransaksi> getAllDetailTransaksiByIDTransaksi(int id);
 
@@ -28,4 +40,6 @@ public interface DetailTransaksiDao {
     public DetailTransaksi getDetailTransaksiByID(int id);
 
     public DetailTransaksi getDetailTransaksiByKode(String kode);
+    
+    public void InsertNoUrutTransaksi(String kode);
 }

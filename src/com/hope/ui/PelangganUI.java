@@ -217,6 +217,7 @@ public class PelangganUI extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        Session.setId_pelanggan(-1);
         AddPelangganUI apui = new AddPelangganUI();
         apui.setVisible(true);
 
