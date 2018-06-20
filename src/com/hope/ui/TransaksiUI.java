@@ -8,8 +8,10 @@ package com.hope.ui;
 import com.hope.pelanggan.Pelanggan;
 import com.hope.transaksi.DetailTransaksi;
 import com.hope.transaksi.DetailTransaksiTabelModel;
+import com.hope.transaksi.Transaksi;
 import com.init.tools.DaoFactory;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.table.TableModel;
@@ -20,7 +22,9 @@ import javax.swing.table.TableRowSorter;
  * @author laravel
  */
 public class TransaksiUI extends javax.swing.JFrame {
+
     TableRowSorter<TableModel> sorter_temp = new TableRowSorter<>();
+
     /**
      * Creates new form TransaksiUI
      */
@@ -29,8 +33,8 @@ public class TransaksiUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         start_load();
     }
-    
-    private void load_detil_temp(){
+
+    private void load_detil_temp() {
         DetailTransaksiTabelModel model = new DetailTransaksiTabelModel(DaoFactory.getDetailTransaksiDao().getAllDetailTransaksiTemp());
         detail_table.setModel(model);
         sorter_temp.setModel(model);
@@ -330,6 +334,11 @@ public class TransaksiUI extends javax.swing.JFrame {
         jButton4.setText("Update");
 
         jButton5.setText("Input");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Print");
 
@@ -459,6 +468,28 @@ public class TransaksiUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_comboPelangganActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String kode = txtKodeTransaksi.getText();
+        Pelanggan p = DaoFactory.getPelangganDao().GetPelangganByKode(txtKodePelanggan.getText());
+        Date tglTransaksi = txtTanggalTransaksi.getDate();
+        Date tglMasuk = txtTanggalMasuk.getDate();
+        Date tglKeluar = txtTanggalKeluar.getDate();
+        int totalHarga = Integer.parseInt(txtTotalHarga.getText());
+        int totalBayar = Integer.parseInt(txtTotalBayar.getText());
+        int totalDiskon = Integer.parseInt(txtTotalDiskon.getText());
+        Transaksi trf = new Transaksi();
+        trf.setKodetranskasi(kode);
+        trf.setPelanggan(p);
+        trf.setTanggaltransaksi(tglTransaksi);
+        trf.setTanggalmasuk(tglMasuk);
+        trf.setTanggalkeluar(tglKeluar);
+        trf.setTotalharga(totalHarga);
+        trf.setTotalbayar(totalBayar);
+        trf.setTotaldiskon(totalDiskon);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

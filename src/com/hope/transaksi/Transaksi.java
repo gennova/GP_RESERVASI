@@ -6,7 +6,7 @@
 package com.hope.transaksi;
 
 import com.hope.pelanggan.Pelanggan;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
