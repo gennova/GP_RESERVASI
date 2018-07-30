@@ -23,6 +23,7 @@ public class Pelanggan {
     private String nomer_wa;//10
     private String line;//11
     private String instagram;//12
+    private String tahun_register; //13
 
     public int getId() {
         return id;
@@ -118,6 +119,14 @@ public class Pelanggan {
 
     public void setInstagram(String instagram) {
         this.instagram = instagram;
+    }
+
+    public void setTahun_register(String tahun_register) {
+        this.tahun_register = tahun_register;
+    }
+
+    public String getTahun_register() {
+        return tahun_register;
     }
 
 }

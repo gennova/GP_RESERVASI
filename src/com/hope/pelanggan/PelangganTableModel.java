@@ -41,6 +41,8 @@ public class PelangganTableModel extends AbstractTableModel {
                 return "Telpon";
             case 5:
                 return "HP";
+            case 6:
+                return "Tahun";
             default:
                 return null;
         }
@@ -48,7 +50,7 @@ public class PelangganTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -66,6 +68,8 @@ public class PelangganTableModel extends AbstractTableModel {
                 return list.get(rowIndex).getTelpon_pelanggan();
             case 5:
                 return list.get(rowIndex).getNomer_hp();
+            case 6:
+                return list.get(rowIndex).getTahun_register();
             default:
                 return null;
         }

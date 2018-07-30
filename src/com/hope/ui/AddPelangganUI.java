@@ -37,6 +37,7 @@ public class AddPelangganUI extends javax.swing.JFrame {
             txtWhatsappPelanggan.setText(p.getNomer_wa());
             txtLinePelanggan.setText(p.getLine());
             txtInstagramPelanggan.setText(p.getInstagram());
+            txtTahun.setText(p.getTahun_register());
         } else {
             txtKodeTamu.setText(DaoFactory.getIDUrutPelanggan());
         }
@@ -55,6 +56,7 @@ public class AddPelangganUI extends javax.swing.JFrame {
         txtWhatsappPelanggan.setText("");
         txtLinePelanggan.setText("");
         txtInstagramPelanggan.setText("");
+        txtTahun.setText("");
     }
 
     /**
@@ -96,6 +98,8 @@ public class AddPelangganUI extends javax.swing.JFrame {
         txtInstagramPelanggan = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        txtTahun = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADD Data Pelanggan - Griya Paseban");
@@ -166,6 +170,8 @@ public class AddPelangganUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("Tahun Daftar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -203,14 +209,16 @@ public class AddPelangganUI extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel11)
-                                    .addComponent(jLabel13))))
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtHPPelanggan)
                             .addComponent(txtHPPelanggan2)
                             .addComponent(txtWhatsappPelanggan)
                             .addComponent(txtLinePelanggan)
-                            .addComponent(txtInstagramPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
+                            .addComponent(txtInstagramPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                            .addComponent(txtTahun, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(70, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -251,9 +259,14 @@ public class AddPelangganUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
-                        .addComponent(txtInstagramPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtInstagramPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtTahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -296,6 +309,7 @@ public class AddPelangganUI extends javax.swing.JFrame {
         String wa = txtWhatsappPelanggan.getText();
         String line = txtLinePelanggan.getText();
         String instagram = txtInstagramPelanggan.getText();
+        String tahun_register = txtTahun.getText();
         Pelanggan p = new Pelanggan();
         p.setKode_pelanggan(kode);
         p.setNama_pelanggan(nama);
@@ -308,6 +322,7 @@ public class AddPelangganUI extends javax.swing.JFrame {
         p.setNomer_wa(wa);
         p.setLine(line);
         p.setInstagram(instagram);
+        p.setTahun_register(tahun_register);
         if (txtID.getText().equalsIgnoreCase("")) {
             DaoFactory.getPelangganDao().InsertPelanggan(p);
             //JOptionPane.showMessageDialog(null, "Data Pelanggan Berhasil Ditambahkan");
@@ -373,6 +388,7 @@ public class AddPelangganUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -394,6 +410,7 @@ public class AddPelangganUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtKodeTamu;
     private javax.swing.JTextField txtLinePelanggan;
     private javax.swing.JTextField txtNamaTamu;
+    private javax.swing.JTextField txtTahun;
     private javax.swing.JTextField txtTelponPelanggan;
     private javax.swing.JTextField txtWhatsappPelanggan;
     // End of variables declaration//GEN-END:variables

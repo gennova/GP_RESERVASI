@@ -23,6 +23,8 @@ public class Transaksi {
     private int totalharga;
     private int totaldiskon;
     private int totalbayar;
+    private int durasi;
+    private String kelompok;
 
     public int getId() {
         return id;
@@ -95,5 +97,23 @@ public class Transaksi {
     public void setTotalbayar(int totalbayar) {
         this.totalbayar = totalbayar;
     }
+
+    public void setDurasi(int durasi) {
+        this.durasi = durasi;
+    }
+
+    public void setKelompok(String kelompok) {
+        this.kelompok = kelompok;
+    }
+
+    public int getDurasi() {
+        return durasi;
+    }
+
+    public String getKelompok() {
+        return kelompok;
+    }
+    
+    
 
 }

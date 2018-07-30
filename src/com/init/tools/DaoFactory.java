@@ -211,7 +211,7 @@ public class DaoFactory {
         }
         return status;
     }
-    
+
     public static String getIDUrutPelanggan() {
         String kode = "";
         String formatlalu = "";
@@ -264,7 +264,7 @@ public class DaoFactory {
         }
         return kode;
     }
-    
+
     public static String getIDUrutTransaksi() {
         String kode = "";
         String formatlalu = "";
@@ -316,5 +316,17 @@ public class DaoFactory {
             Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return kode;
+    }
+
+    public static void insertUrutTransaksi(String kodetrans) throws SQLException {
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement("insert into uruttransaksi(kodetransaksi) values(?)");
+            statement.setString(1, kodetrans);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
     }
 }
