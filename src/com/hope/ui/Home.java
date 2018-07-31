@@ -256,6 +256,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         buttonGradientColor2.setText("KAMAR");
+        buttonGradientColor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGradientColor2ActionPerformed(evt);
+            }
+        });
 
         buttonGradientColor3.setText("KATEGORI");
         buttonGradientColor3.addActionListener(new java.awt.event.ActionListener() {
@@ -313,7 +318,7 @@ public class Home extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jDesktopPane1))
@@ -323,7 +328,7 @@ public class Home extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(284, Short.MAX_VALUE)
+                .addContainerGap(407, Short.MAX_VALUE)
                 .addComponent(jLabel9))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -355,7 +360,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -404,6 +409,8 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        LaporanUI laporanUI = new LaporanUI();
+        laporanUI.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -421,6 +428,12 @@ public class Home extends javax.swing.JFrame {
         KategoriKamarUI i = new KategoriKamarUI();
         i.setVisible(true);
     }//GEN-LAST:event_buttonGradientColor3ActionPerformed
+
+    private void buttonGradientColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGradientColor2ActionPerformed
+        // TODO add your handling code here:
+        UITest iTest = new UITest();
+        iTest.setVisible(true);
+    }//GEN-LAST:event_buttonGradientColor2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -24,4 +24,6 @@ public interface TransaksiDao {
     public Transaksi getTransaksiByID(int id);
 
     public Transaksi getTransaksiByKode(String kode);
+    
+    public void InsertDetailTransaksiIntoTEMP(String kode);
 }

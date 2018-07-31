@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.hope.pelanggan;
+package com.hope.transaksi;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,17 +13,17 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author laravel
  */
-public class PelangganTableModel extends AbstractTableModel {
+public class TransaksiTabelModel extends AbstractTableModel {
 
-    private List<Pelanggan> list = new ArrayList<>();
+    private final List<Transaksi> lists;
 
-    public PelangganTableModel(List<Pelanggan> list) {
-        this.list = list;
+    public TransaksiTabelModel(List<Transaksi> lists) {
+        this.lists = lists;
     }
 
     @Override
     public int getRowCount() {
-        return list.size();
+        return lists.size();
     }
 
     @Override
@@ -34,15 +34,15 @@ public class PelangganTableModel extends AbstractTableModel {
             case 1:
                 return "Kode";
             case 2:
-                return "Nama Pelanggan";
+                return "Pelanggan";
             case 3:
-                return "Kantor";
+                return "Kelompok";
             case 4:
-                return "Telpon";
+                return "Tanggal";
             case 5:
-                return "HP";
+                return "Durasi";
             case 6:
-                return "Tahun";
+                return "Total harga";
             default:
                 return null;
         }
@@ -55,23 +55,25 @@ public class PelangganTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         switch (columnIndex) {
             case 0:
-                return list.get(rowIndex).getId();
+                return rowIndex + 1;
             case 1:
-                return list.get(rowIndex).getKode_pelanggan();
+                return lists.get(rowIndex).getKodetranskasi();
             case 2:
-                return list.get(rowIndex).getNama_pelanggan();
+                return lists.get(rowIndex).getPelanggan().getNama_pelanggan().toUpperCase();
             case 3:
-                return list.get(rowIndex).getNama_lembaga();
+                return lists.get(rowIndex).getKelompok().toUpperCase();
             case 4:
-                return list.get(rowIndex).getTelpon_pelanggan();
+                return sdf.format(lists.get(rowIndex).getTanggaltransaksi());
             case 5:
-                return list.get(rowIndex).getNomer_hp();
+                return lists.get(rowIndex).getDurasi();
             case 6:
-                return list.get(rowIndex).getTahun_register();
+                return lists.get(rowIndex).getTotalbayar();
             default:
                 return null;
         }
     }
+
 }

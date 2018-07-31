@@ -28,4 +28,8 @@ public interface PelangganDao {
     public void DeletePelangganByID(int id);
     
     public void InsertUrutPelanggan(String kode);
+    
+    public List<Pelanggan> GetAllPelangganTahun(String tahun);
+    
+    public List<Pelanggan> GetAllPelangganTahunUnik(String tahun);
 }
