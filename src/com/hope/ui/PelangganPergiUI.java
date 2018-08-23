@@ -13,14 +13,14 @@ import javax.swing.table.TableRowSorter;
  *
  * @author laravel
  */
-public class PelangganBaruUI extends javax.swing.JFrame {
+public class PelangganPergiUI extends javax.swing.JFrame {
 
     private TableRowSorter sorter;
 
     /**
      * Creates new form PelangganBaruUI
      */
-    public PelangganBaruUI() {
+    public PelangganPergiUI() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -50,11 +50,11 @@ public class PelangganBaruUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Laporan Data Pelanggan Baru");
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DATA PELANGGAN BARU");
+        jLabel1.setText("DATA PELANGGAN PERGI");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,7 +103,7 @@ public class PelangganBaruUI extends javax.swing.JFrame {
 
         jButton3.setText("Print");
 
-        checkBaru.setText("Pelanggan Baru");
+        checkBaru.setText("Pelanggan Pergi");
 
         labelTotal.setText("Total data");
 
@@ -176,7 +176,7 @@ public class PelangganBaruUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (checkBaru.isSelected()) {
-            PelangganTableModel ptm = new PelangganTableModel(DaoFactory.getPelangganDao().GetAllPelangganTahunUnik(combotahun.getSelectedItem().toString()));
+            PelangganTableModel ptm = new PelangganTableModel(DaoFactory.getPelangganDao().GetAllPelangganTahunUnikPergi(combotahun.getSelectedItem().toString()));
             sorter = new TableRowSorter(ptm);
             System.out.println(ptm.getRowCount());
             tabel_pelanggan.setModel(ptm);
@@ -236,20 +236,21 @@ public class PelangganBaruUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PelangganBaruUI().setVisible(true);
+                new PelangganPergiUI().setVisible(true);
             }
         });
     }

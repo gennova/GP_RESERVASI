@@ -13,14 +13,14 @@ import javax.swing.table.TableRowSorter;
  *
  * @author laravel
  */
-public class PelangganBaruUI extends javax.swing.JFrame {
+public class PelangganPergiUI2Last extends javax.swing.JFrame {
 
     private TableRowSorter sorter;
 
     /**
      * Creates new form PelangganBaruUI
      */
-    public PelangganBaruUI() {
+    public PelangganPergiUI2Last() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -50,11 +50,12 @@ public class PelangganBaruUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Laporan Data Pelanggan Baru");
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DATA PELANGGAN BARU");
+        jLabel1.setText("DATA PELANGGAN BARU BERDASARKAN KANTOR 1 TAHUN TERAKHIR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,7 +104,12 @@ public class PelangganBaruUI extends javax.swing.JFrame {
 
         jButton3.setText("Print");
 
-        checkBaru.setText("Pelanggan Baru");
+        checkBaru.setText("Pelanggan Pergi");
+        checkBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBaruActionPerformed(evt);
+            }
+        });
 
         labelTotal.setText("Total data");
 
@@ -176,7 +182,7 @@ public class PelangganBaruUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (checkBaru.isSelected()) {
-            PelangganTableModel ptm = new PelangganTableModel(DaoFactory.getPelangganDao().GetAllPelangganTahunUnik(combotahun.getSelectedItem().toString()));
+            PelangganTableModel ptm = new PelangganTableModel(DaoFactory.getPelangganDao().GetAllPelangganTahunUnikKantorPergiLast(combotahun.getSelectedItem().toString()));
             sorter = new TableRowSorter(ptm);
             System.out.println(ptm.getRowCount());
             tabel_pelanggan.setModel(ptm);
@@ -185,7 +191,7 @@ public class PelangganBaruUI extends javax.swing.JFrame {
             tabel_pelanggan.getColumnModel().getColumn(1).setPreferredWidth(60);
             tabel_pelanggan.getColumnModel().getColumn(2).setPreferredWidth(150);
             tabel_pelanggan.getColumnModel().getColumn(3).setPreferredWidth(200);
-            labelTotal.setText("Total data : "+String.valueOf(ptm.getRowCount())+" baris");
+            labelTotal.setText("Total data : " + String.valueOf(ptm.getRowCount()) + " baris");
         } else {
             PelangganTableModel ptm = new PelangganTableModel(DaoFactory.getPelangganDao().GetAllPelangganTahun(combotahun.getSelectedItem().toString()));
             sorter = new TableRowSorter(ptm);
@@ -196,7 +202,7 @@ public class PelangganBaruUI extends javax.swing.JFrame {
             tabel_pelanggan.getColumnModel().getColumn(1).setPreferredWidth(60);
             tabel_pelanggan.getColumnModel().getColumn(2).setPreferredWidth(150);
             tabel_pelanggan.getColumnModel().getColumn(3).setPreferredWidth(200);
-            labelTotal.setText("Total data : "+String.valueOf(ptm.getRowCount())+" baris");
+            labelTotal.setText("Total data : " + String.valueOf(ptm.getRowCount()) + " baris");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -211,13 +217,17 @@ public class PelangganBaruUI extends javax.swing.JFrame {
         tabel_pelanggan.getColumnModel().getColumn(1).setPreferredWidth(60);
         tabel_pelanggan.getColumnModel().getColumn(2).setPreferredWidth(150);
         tabel_pelanggan.getColumnModel().getColumn(3).setPreferredWidth(200);
-        labelTotal.setText("Total data : "+String.valueOf(ptm.getRowCount())+" baris");
+        labelTotal.setText("Total data : " + String.valueOf(ptm.getRowCount()) + " baris");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void checkBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBaruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBaruActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,20 +246,27 @@ public class PelangganBaruUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI2Last.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI2Last.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI2Last.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PelangganBaruUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PelangganPergiUI2Last.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PelangganBaruUI().setVisible(true);
+                new PelangganPergiUI2Last().setVisible(true);
             }
         });
     }

@@ -30,6 +30,11 @@ public class PelangganDaoImplemen implements PelangganDao {
     private final String sql_get_all_pelanggan_nama = "select * from pelanggan where nama=?";
     private final String sql_get_all_pelanggan_tahun = "select * from pelanggan where tahunregister=?";
     private final String sql_get_all_pelanggan_tahun_unik = "SELECT * FROM pelanggan WHERE tahunregister=? AND nama NOT IN (SELECT nama FROM pelanggan WHERE tahunregister<?)";
+    private final String sql_get_all_pelanggan_tahun_unik_pergi = "SELECT * FROM pelanggan WHERE tahunregister<? AND nama NOT IN (SELECT nama FROM pelanggan WHERE tahunregister=?)";
+    private final String sql_get_all_pelanggan_tahun_unik_kantor = "SELECT * FROM pelanggan WHERE tahunregister=? AND kantor NOT IN (SELECT kantor FROM pelanggan WHERE tahunregister<?)";
+    private final String sql_get_all_pelanggan_tahun_unik_kantor_pergi = "SELECT * FROM pelanggan WHERE tahunregister<? AND kantor NOT IN (SELECT kantor FROM pelanggan WHERE tahunregister=?)";
+    private final String sql_get_all_pelanggan_tahun_unik_last = "SELECT * FROM pelanggan WHERE tahunregister=? AND nama NOT IN (SELECT nama FROM pelanggan WHERE tahunregister=?)";
+    private final String sql_get_all_pelanggan_tahun_unik_kantor_pergi_last = "SELECT * FROM pelanggan WHERE tahunregister<? AND kantor NOT IN (SELECT kantor FROM pelanggan WHERE tahunregister=?)";
 
     public PelangganDaoImplemen(Connection c) {
         this.connection = c;
@@ -291,6 +296,177 @@ public class PelangganDaoImplemen implements PelangganDao {
         try {
             ps = connection.prepareStatement(sql_get_all_pelanggan_tahun_unik);
             ps.setString(1, tahun);
+            ps.setString(2, tahun);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pelanggan pelanggan = new Pelanggan();
+                pelanggan.setId(rs.getInt("id"));
+                pelanggan.setKode_pelanggan(rs.getString("kode"));
+                pelanggan.setNama_pelanggan(rs.getString("nama"));
+                pelanggan.setNama_lembaga(rs.getString("kantor"));
+                pelanggan.setAlamat_pelanggan(rs.getString("alamat"));
+                pelanggan.setEmail_pelanggan(rs.getString("email"));
+                pelanggan.setTelpon_pelanggan(rs.getString("telpon"));
+                pelanggan.setNomer_hp(rs.getString("hp"));
+                pelanggan.setNomer_hp2(rs.getString("hp2"));
+                pelanggan.setNomer_wa(rs.getString("wa"));
+                pelanggan.setLine(rs.getString("line"));
+                pelanggan.setInstagram(rs.getString("instagram"));
+                pelanggan.setTahun_register(rs.getString("tahunregister"));
+                list.add(pelanggan);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Pelanggan> GetAllPelangganTahunUnikKantor(String tahun) {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Pelanggan> list = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(sql_get_all_pelanggan_tahun_unik_kantor);
+            ps.setString(1, tahun);
+            ps.setString(2, tahun);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pelanggan pelanggan = new Pelanggan();
+                pelanggan.setId(rs.getInt("id"));
+                pelanggan.setKode_pelanggan(rs.getString("kode"));
+                pelanggan.setNama_pelanggan(rs.getString("nama"));
+                pelanggan.setNama_lembaga(rs.getString("kantor"));
+                pelanggan.setAlamat_pelanggan(rs.getString("alamat"));
+                pelanggan.setEmail_pelanggan(rs.getString("email"));
+                pelanggan.setTelpon_pelanggan(rs.getString("telpon"));
+                pelanggan.setNomer_hp(rs.getString("hp"));
+                pelanggan.setNomer_hp2(rs.getString("hp2"));
+                pelanggan.setNomer_wa(rs.getString("wa"));
+                pelanggan.setLine(rs.getString("line"));
+                pelanggan.setInstagram(rs.getString("instagram"));
+                pelanggan.setTahun_register(rs.getString("tahunregister"));
+                list.add(pelanggan);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Pelanggan> GetAllPelangganTahunUnikPergi(String tahun) {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Pelanggan> list = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(sql_get_all_pelanggan_tahun_unik_pergi);
+            ps.setString(1, tahun);
+            ps.setString(2, tahun);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pelanggan pelanggan = new Pelanggan();
+                pelanggan.setId(rs.getInt("id"));
+                pelanggan.setKode_pelanggan(rs.getString("kode"));
+                pelanggan.setNama_pelanggan(rs.getString("nama"));
+                pelanggan.setNama_lembaga(rs.getString("kantor"));
+                pelanggan.setAlamat_pelanggan(rs.getString("alamat"));
+                pelanggan.setEmail_pelanggan(rs.getString("email"));
+                pelanggan.setTelpon_pelanggan(rs.getString("telpon"));
+                pelanggan.setNomer_hp(rs.getString("hp"));
+                pelanggan.setNomer_hp2(rs.getString("hp2"));
+                pelanggan.setNomer_wa(rs.getString("wa"));
+                pelanggan.setLine(rs.getString("line"));
+                pelanggan.setInstagram(rs.getString("instagram"));
+                pelanggan.setTahun_register(rs.getString("tahunregister"));
+                list.add(pelanggan);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Pelanggan> GetAllPelangganTahunUnikKantorPergi(String tahun) {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Pelanggan> list = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(sql_get_all_pelanggan_tahun_unik_kantor_pergi);
+            ps.setString(1, tahun);
+            ps.setString(2, tahun);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pelanggan pelanggan = new Pelanggan();
+                pelanggan.setId(rs.getInt("id"));
+                pelanggan.setKode_pelanggan(rs.getString("kode"));
+                pelanggan.setNama_pelanggan(rs.getString("nama"));
+                pelanggan.setNama_lembaga(rs.getString("kantor"));
+                pelanggan.setAlamat_pelanggan(rs.getString("alamat"));
+                pelanggan.setEmail_pelanggan(rs.getString("email"));
+                pelanggan.setTelpon_pelanggan(rs.getString("telpon"));
+                pelanggan.setNomer_hp(rs.getString("hp"));
+                pelanggan.setNomer_hp2(rs.getString("hp2"));
+                pelanggan.setNomer_wa(rs.getString("wa"));
+                pelanggan.setLine(rs.getString("line"));
+                pelanggan.setInstagram(rs.getString("instagram"));
+                pelanggan.setTahun_register(rs.getString("tahunregister"));
+                list.add(pelanggan);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Pelanggan> GetAllPelangganTahunUnikPergiLast(String tahun) {
+       PreparedStatement ps;
+        ResultSet rs;
+        int tahunI = Integer.parseInt(tahun) -1 ;
+        String tahun_sebelum = String.valueOf(tahunI);
+        System.out.println("Tahunnnnnnnnnnnnn sebelum : "+ tahun_sebelum);
+        List<Pelanggan> list = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(sql_get_all_pelanggan_tahun_unik_last);
+            ps.setString(1, tahun_sebelum);
+            ps.setString(2, tahun);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pelanggan pelanggan = new Pelanggan();
+                pelanggan.setId(rs.getInt("id"));
+                pelanggan.setKode_pelanggan(rs.getString("kode"));
+                pelanggan.setNama_pelanggan(rs.getString("nama"));
+                pelanggan.setNama_lembaga(rs.getString("kantor"));
+                pelanggan.setAlamat_pelanggan(rs.getString("alamat"));
+                pelanggan.setEmail_pelanggan(rs.getString("email"));
+                pelanggan.setTelpon_pelanggan(rs.getString("telpon"));
+                pelanggan.setNomer_hp(rs.getString("hp"));
+                pelanggan.setNomer_hp2(rs.getString("hp2"));
+                pelanggan.setNomer_wa(rs.getString("wa"));
+                pelanggan.setLine(rs.getString("line"));
+                pelanggan.setInstagram(rs.getString("instagram"));
+                pelanggan.setTahun_register(rs.getString("tahunregister"));
+                list.add(pelanggan);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PelangganDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Pelanggan> GetAllPelangganTahunUnikKantorPergiLast(String tahun) {
+        PreparedStatement ps;
+        ResultSet rs;
+        int tahunI = Integer.parseInt(tahun) -1 ;        
+        String tahun_sebelum = String.valueOf(tahunI);
+        System.out.println("Tahunnnnnnnnnnnnn sebelum : "+ tahun_sebelum);
+        List<Pelanggan> list = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(sql_get_all_pelanggan_tahun_unik_kantor_pergi_last);
+            ps.setString(1, tahun_sebelum);
             ps.setString(2, tahun);
             rs = ps.executeQuery();
             while (rs.next()) {

@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -410,6 +411,11 @@ public class TransaksiUI extends javax.swing.JFrame {
                 "No", "Layanan", "Harga", "Diskon"
             }
         ));
+        detail_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detail_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(detail_table);
 
         jButton2.setText("Close");
@@ -1038,6 +1044,17 @@ public class TransaksiUI extends javax.swing.JFrame {
             txtDurasi.setText(String.valueOf(daysDiff));
         }
     }//GEN-LAST:event_txtTanggalMasukPropertyChange
+
+    private void detail_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detail_tableMouseClicked
+        // TODO add your handling code here:
+        int row = detail_table.getSelectedRow();
+        if (row >= 0) {
+            int opsi = JOptionPane.showConfirmDialog(null, "Anda akan menghapus baris ini", "PERINGATAN", JOptionPane.OK_CANCEL_OPTION);
+            if (opsi == JOptionPane.OK_OPTION) {
+                int kode_detail_temp = Integer.parseInt(detail_table.getValueAt(row, 0).toString());
+            }
+        }
+    }//GEN-LAST:event_detail_tableMouseClicked
 
     private void load_db() {
         PelangganTableModel ptm = new PelangganTableModel(DaoFactory.getPelangganDao().GetAllPelanggan());

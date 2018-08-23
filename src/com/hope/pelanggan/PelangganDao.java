@@ -32,4 +32,14 @@ public interface PelangganDao {
     public List<Pelanggan> GetAllPelangganTahun(String tahun);
     
     public List<Pelanggan> GetAllPelangganTahunUnik(String tahun);
+    
+    public List<Pelanggan> GetAllPelangganTahunUnikPergi(String tahun);
+    
+    public List<Pelanggan> GetAllPelangganTahunUnikKantor(String tahun);
+    
+    public List<Pelanggan> GetAllPelangganTahunUnikKantorPergi(String tahun);
+    
+    public List<Pelanggan> GetAllPelangganTahunUnikPergiLast(String tahun);
+    
+    public List<Pelanggan> GetAllPelangganTahunUnikKantorPergiLast(String tahun);
 }
