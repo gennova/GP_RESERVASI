@@ -21,9 +21,13 @@ public interface KamarDao {
 
     public List<Kamar> GetAllKamar();
 
+    public List<Kamar> getKetersediaanKamarKosong();
+
     public Kamar GetKamarByID(int id);
 
     public Kamar GetKamarByType(String tipe);
 
     public Kamar GetKamarByName(String nama);
+
+    public void Update_status_kamar(String status, String kode);
 }

@@ -18,6 +18,8 @@ public class Kamar {
     private String fasilitas;
     private String keterangan;
     private String tipe;
+    private String status_pakai;
+    private int ketersediaan;
 
     public Kamar() {
 
@@ -78,4 +80,21 @@ public class Kamar {
     public String getTipe() {
         return tipe;
     }
+
+    public void setStatus_pakai(String status_pakai) {
+        this.status_pakai = status_pakai;
+    }
+
+    public String getStatus_pakai() {
+        return status_pakai;
+    }
+
+    public void setKetersediaan(int ketersediaan) {
+        this.ketersediaan = ketersediaan;
+    }
+
+    public int getKetersediaan() {
+        return ketersediaan;
+    }
+
 }

@@ -23,6 +23,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+
 /**
  *
  * @author laravel
@@ -607,12 +608,12 @@ public class TransaksiUI extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(txtPelangganSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
                     .addComponent(jButton11))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jDesktopPane2.setLayer(jPanel5, javax.swing.JLayeredPane.DEFAULT_LAYER);

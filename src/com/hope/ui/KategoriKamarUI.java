@@ -34,7 +34,7 @@ public class KategoriKamarUI extends javax.swing.JFrame {
     }
 
     private void load_table() {
-        KategoriKamarTableModel kktm = new KategoriKamarTableModel(DaoFactory.getKamarDao().getAllKategori());
+        KategoriKamarTableModel kktm = new KategoriKamarTableModel(DaoFactory.getKategoriKamarDao().getAllKategori());
         tabel_kategori.setModel(kktm);
         sorter.setModel(kktm);
         tabel_kategori.setRowSorter(sorter);
@@ -187,7 +187,7 @@ public class KategoriKamarUI extends javax.swing.JFrame {
         String nama = txtNamaKategori.getText();
         KategoriKamar k = new KategoriKamar();
         k.setNama_kategori(nama);
-        DaoFactory.getKamarDao().InsertKategori(k);
+        DaoFactory.getKategoriKamarDao().InsertKategori(k);
         clear_field();
         load_table();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -215,7 +215,7 @@ public class KategoriKamarUI extends javax.swing.JFrame {
         KategoriKamar k = new KategoriKamar();
         k.setId(kode);
         k.setNama_kategori(nama);
-        DaoFactory.getKamarDao().UpdateKategori(k);
+        DaoFactory.getKategoriKamarDao().UpdateKategori(k);
         clear_field();
         load_table();
     }//GEN-LAST:event_jButton3ActionPerformed

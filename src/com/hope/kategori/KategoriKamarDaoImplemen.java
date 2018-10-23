@@ -5,8 +5,6 @@
  */
 package com.hope.kategori;
 
-import com.hope.kamar.Kamar;
-import com.hope.kamar.KamarDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,9 +19,8 @@ import javax.swing.JOptionPane;
  *
  * @author laravel
  */
-public class KategoriKamarDaoImplemen implements KategoriKamarDao {
-
-    private Connection connection;
+public class KategoriKamarDaoImplemen implements KategoriKamarDao{
+    private final Connection connection;
     private static final String sql_insert_kategori = "insert into kategori_kamar(nama_kategori) values (?)";
     private static final String sql_update_kategori = "update kategori_kamar set nama_kategori=? where id=?";
     private static final String sql_get_all_kategori = "select * from kategori_kamar";
@@ -104,6 +101,7 @@ public class KategoriKamarDaoImplemen implements KategoriKamarDao {
         KategoriKamar kamar = null;
         try {
             ps = connection.prepareStatement(sql_get_kategori_by_id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {                
                 kamar = new KategoriKamar();
@@ -115,5 +113,4 @@ public class KategoriKamarDaoImplemen implements KategoriKamarDao {
         }
         return kamar;
     }
-
 }

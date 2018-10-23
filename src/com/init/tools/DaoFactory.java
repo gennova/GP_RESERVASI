@@ -5,6 +5,8 @@
  */
 package com.init.tools;
 
+import com.hope.kamar.KamarDao;
+import com.hope.kamar.KamarDaoImplemen;
 import com.hope.kategori.KategoriKamarDao;
 import com.hope.kategori.KategoriKamarDaoImplemen;
 import com.hope.pelanggan.PelangganDao;
@@ -44,9 +46,17 @@ public class DaoFactory {
     static String password = "";
     private static Statement st = null;
     private static PelangganDao pelangganDao;
-    private static KategoriKamarDao kamarDao;
+    private static KategoriKamarDao kategori_kamarDao;
+    private static KamarDao kamarDao;
     private static TransaksiDao transaksiDao;
     private static DetailTransaksiDao detailTransaksiDao;
+
+    public static KamarDao getKamarDao() {
+        if (kamarDao == null) {
+            kamarDao = new KamarDaoImplemen(getConnectionFix());
+        }
+        return kamarDao;
+    }
 
     public static TransaksiDao getTransaksiDao() {
         if (transaksiDao == null) {
@@ -62,11 +72,11 @@ public class DaoFactory {
         return detailTransaksiDao;
     }
 
-    public static KategoriKamarDao getKamarDao() {
-        if (kamarDao == null) {
-            kamarDao = new KategoriKamarDaoImplemen(getConnectionFix());
+    public static KategoriKamarDao getKategoriKamarDao() {
+        if (kategori_kamarDao == null) {
+            kategori_kamarDao = new KategoriKamarDaoImplemen(getConnectionFix());
         }
-        return kamarDao;
+        return kategori_kamarDao;
     }
 
     public static PelangganDao getPelangganDao() {
