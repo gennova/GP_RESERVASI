@@ -25,8 +25,8 @@ import javax.swing.JOptionPane;
 public class TransaksiDaoImplemen implements TransaksiDao {
 
     private final Connection connection;
-    private final String sql_insert_transaksi = "call spInsertTransaksi(?,?,?,?,?,?,?,?,?,?)";
-    private final String sql_update_transaksi = "call spUpdateTransaksi(?,?,?,?,?,?,?,?,?,?)";
+    private final String sql_insert_transaksi = "call spInsertTransaksi(?,?,?,?,?,?,?,?,?,?,?)";
+    private final String sql_update_transaksi = "call spUpdateTransaksi(?,?,?,?,?,?,?,?,?,?,?)";
     private final String sql_get_all_transaksi = "select * from transaksi";
     private final String sql_get_transaksi_by_kode = "select * from transaksi where kodetransaksi=?";
     private final String sqlInsertDetailToTemp = "INSERT INTO detailtransaksi_temp (id_temp,kodetransaksi,layanan,harga,diskon) SELECT id_temp,kodetransaksi,layanan,harga,diskon FROM detailtransaksi where kodetransaksi=?";
@@ -51,6 +51,7 @@ public class TransaksiDaoImplemen implements TransaksiDao {
             ps.setInt(8, transaksi.getTotaldiskon());
             ps.setInt(9, transaksi.getTotalbayar());
             ps.setInt(10, transaksi.getDurasi());
+            ps.setString(11, transaksi.getCheck_in());
             int status = ps.executeUpdate();
             if (status == 0) {
                 JOptionPane.showMessageDialog(null, "Data berhasil tersimpan");
@@ -77,6 +78,7 @@ public class TransaksiDaoImplemen implements TransaksiDao {
             ps.setInt(8, transaksi.getTotaldiskon());
             ps.setInt(9, transaksi.getTotalbayar());
             ps.setInt(10, transaksi.getDurasi());
+            ps.setString(11, transaksi.getCheck_in());
             int status = ps.executeUpdate();
             if (status == 0) {
                 JOptionPane.showMessageDialog(null, "Data berhasil terupdate");
@@ -114,6 +116,7 @@ public class TransaksiDaoImplemen implements TransaksiDao {
                 t.setTotaldiskon(rs.getInt("totaldiskon"));
                 t.setTotalharga(rs.getInt("totalharga"));
                 t.setDurasi(rs.getInt("durasi"));
+                t.setCheck_in(rs.getString("status"));
                 list.add(t);
             }
         } catch (SQLException | ParseException ex) {
@@ -150,6 +153,7 @@ public class TransaksiDaoImplemen implements TransaksiDao {
                 t.setTotaldiskon(rs.getInt("totaldiskon"));
                 t.setTotalharga(rs.getInt("totalharga"));
                 t.setDurasi(rs.getInt("durasi"));
+                t.setCheck_in(rs.getString("status"));
             }
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(TransaksiDaoImplemen.class.getName()).log(Level.SEVERE, null, ex);

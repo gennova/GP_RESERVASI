@@ -829,6 +829,7 @@ public class TransaksiUI extends javax.swing.JFrame {
         trf.setTotaldiskon(totalDiskon);
         trf.setDurasi(Integer.parseInt(txtDurasi.getText()));
         trf.setKelompok(txtKelompok.getText());
+        trf.setCheck_in("CHECK IN");
         DaoFactory.getTransaksiDao().InsertTransaksi(trf);
         try {
             DaoFactory.insertUrutTransaksi(kode);
@@ -1003,6 +1004,7 @@ public class TransaksiUI extends javax.swing.JFrame {
         trf.setTotaldiskon(totalDiskon);
         trf.setDurasi(Integer.parseInt(txtDurasi.getText()));
         trf.setKelompok(txtKelompok.getText());
+        trf.setCheck_in("CHECK IN");
         DaoFactory.getTransaksiDao().UpdateTransaksi(trf);
         try {
             DaoFactory.insertUrutTransaksi(kode);

@@ -25,6 +25,7 @@ public class Transaksi {
     private int totalbayar;
     private int durasi;
     private String kelompok;
+    private String check_in;
 
     public int getId() {
         return id;
@@ -113,7 +114,13 @@ public class Transaksi {
     public String getKelompok() {
         return kelompok;
     }
-    
-    
+
+    public void setCheck_in(String check_in) {
+        this.check_in = check_in;
+    }
+
+    public String getCheck_in() {
+        return check_in;
+    }
 
 }

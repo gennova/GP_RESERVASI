@@ -43,6 +43,8 @@ public class TransaksiTabelModel extends AbstractTableModel {
                 return "Durasi";
             case 6:
                 return "Total harga";
+            case 7:
+                return "Status";
             default:
                 return null;
         }
@@ -50,7 +52,7 @@ public class TransaksiTabelModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 8;
     }
 
     @Override
@@ -71,6 +73,8 @@ public class TransaksiTabelModel extends AbstractTableModel {
                 return lists.get(rowIndex).getDurasi();
             case 6:
                 return lists.get(rowIndex).getTotalbayar();
+            case 7:
+                return lists.get(rowIndex).getCheck_in();
             default:
                 return null;
         }

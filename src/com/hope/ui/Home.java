@@ -205,6 +205,7 @@ public class Home extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("INFORMASI KAMAR TERSEDIA");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
